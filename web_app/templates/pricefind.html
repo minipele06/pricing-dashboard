@@ -1,0 +1,88 @@
+<!doctype html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            .buy-box {
+                position: relative;
+                top: 10px;
+                left: 40px;
+                color: black;
+                padding-top: 10px;
+                padding-left: 40px;
+                padding-bottom: 10px;
+                margin-right: 56vw;
+                border: #0f0f12 outset 2px;
+                border-radius: 15px;
+            }
+            table {
+                border-collapse: collapse;
+                width: 50%;
+            }
+            table, th, td {
+                border: 1px solid black;
+                text-align: center;
+            }
+            th {
+                background-color: #4CAF50;
+                color: white;
+            }
+            tr:hover {background-color: #f5f5f5;}
+            .footer {
+                position: relative;
+                top: 125px;
+                left: 20px;
+                font-size: 16px;
+                color: black;
+                width: 1065px;
+                height: 100px;
+            }
+        </style>
+    </head>
+
+{% extends "bootstrap_layout2.html" %}
+{% set active_page = "home" %}
+
+{% block content %}
+    <h1>Trading Platform</h1>
+
+    <p>Enter Stock That You'd Like To Search For</p>
+
+    <div class="buy-box">
+
+        <form action="/pricefind" method="POST">
+
+            <label>Stock Ticker:</label>
+            <input type="text" name="ticker" placeholder="AAPL" value="">
+            <br>
+            <label>Start Date:</label>
+            <input type="text" name="sdate" placeholder="mm/dd/yyyy" value="">
+            <br>
+            <label>End Date:</label>
+            <input type="text" name="edate" placeholder="mm/dd/yyyy" value="">
+            <br>
+            <button>Find</button>
+        </form>
+    </div>
+    <br>
+    <table style="width:100%">
+        <!-- table header -->
+        {% if results2 %}
+        <tr>
+           {% for item in results2[0] %}
+           <th> {{ item }} </th>
+           {% endfor %}
+        </tr>
+        {% endif %}
+      
+        <!-- table rows -->
+        {% for dict_item in results2 %}
+        <tr>
+           {% for value in dict_item.values() %}
+           <td> {{ value }} </td>
+           {% endfor %}
+        </tr>
+        {% endfor %}
+    </table>
+{% endblock %}
+</html>
