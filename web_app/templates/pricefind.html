@@ -23,14 +23,25 @@
                 border: 1px solid black;
                 text-align: center;
             }
+            
             th {
                 background-color: #4CAF50;
                 color: white;
             }
+            thead, tbody { display: block; }
+
+            tbody {
+                height: 200px;       /* Just for the demo          */
+                overflow-y: auto;    /* Trigger vertical scroll    */
+                overflow-x: hidden;  /* Hide the horizontal scroll */
+            }
+            tbody td, thead th {
+                width: 20%;  /* Optional */
+            }
             tr:hover {background-color: #f5f5f5;}
             .footer {
                 position: relative;
-                top: 125px;
+                top: 25px;
                 left: 20px;
                 font-size: 16px;
                 color: black;
@@ -84,5 +95,9 @@
         </tr>
         {% endfor %}
     </table>
+    <div class="footer">
+        <hr>
+        &copy; Copyright 2021 Team 6 |
+    </div>
 {% endblock %}
 </html>
