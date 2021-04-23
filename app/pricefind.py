@@ -19,5 +19,5 @@ def pricefind(symbol,sdate,edate):
     # plt.plot(df['Date'],df['Close'])
     # plt.xlabel('Date',fontsize=10)
     # plt.savefig("my_chart_name.png")
-    new_df = new_df.to_dict('records')
+    #new_df = new_df.to_dict('records')
     return new_df

@@ -29,8 +29,7 @@ def execute_query(connection, query):
 
 create_security_table = """
 CREATE TABLE security (
-  security_id INT PRIMARY KEY AUTO_INCREMENT,
-  ticker VARCHAR(10) NOT NULL,
+  ticker VARCHAR(10) PRIMARY KEY,
   name VARCHAR(100) NULL,
   sector VARCHAR(100) NULL,
   industry VARCHAR(100) NULL,
@@ -42,7 +41,7 @@ CREATE TABLE security (
 create_price_table = """
 CREATE TABLE daily_price (
   price_id INT PRIMARY KEY AUTO_INCREMENT,
-  security_id INT,
+  ticker VARCHAR(10),
   price_date DATE NOT NULL,
   Open DECIMAL(11,2) NULL DEFAULT NULL,
   High DECIMAL(11,2) NULL DEFAULT NULL,
@@ -54,12 +53,12 @@ CREATE TABLE daily_price (
 
 alter_price_table = """
 ALTER TABLE daily_price
-ADD FOREIGN KEY(security_id)
-REFERENCES security(security_id)
+ADD FOREIGN KEY(ticker)
+REFERENCES security(ticker)
 ON DELETE SET NULL;
 """
 
 connection = create_db_connection("localhost", "root", "@Ja10192", "stock_prices") # Connect to the Database
-execute_query(connection, create_security_table)
+#execute_query(connection, create_security_table)
 execute_query(connection, create_price_table)
 execute_query(connection, alter_price_table)
