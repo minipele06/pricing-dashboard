@@ -12,6 +12,7 @@ def pricefind(symbol,sdate,edate):
     df = pd.read_csv(url)
     df.rename(columns={'timestamp':'price_date','open':'Open','high':'High','low':'Low','close':'Close','volume':'Volume'}, inplace=True)
     df['price_date'] = pd.to_datetime(df['price_date']).dt.normalize()
+    df['strdate'] = df['price_date'].dt.strftime('%Y-%m-%d')
     new_df = df[(df['price_date'] >= sdate) & (df['price_date'] <= edate)]
     # x = df['Date']
     # y = df['Close']

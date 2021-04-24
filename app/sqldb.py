@@ -40,7 +40,7 @@ CREATE TABLE security (
 
 create_price_table = """
 CREATE TABLE daily_price (
-  price_id INT PRIMARY KEY AUTO_INCREMENT,
+  price_id VARCHAR(20) PRIMARY KEY,
   ticker VARCHAR(10),
   price_date DATE NOT NULL,
   Open DECIMAL(11,2) NULL DEFAULT NULL,
@@ -59,6 +59,6 @@ ON DELETE SET NULL;
 """
 
 connection = create_db_connection("localhost", "root", "@Ja10192", "stock_prices") # Connect to the Database
-#execute_query(connection, create_security_table)
+execute_query(connection, create_security_table)
 execute_query(connection, create_price_table)
 execute_query(connection, alter_price_table)
