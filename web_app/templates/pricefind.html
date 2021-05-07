@@ -57,7 +57,7 @@
 {% block content %}
     <h1>Trading Platform</h1>
 
-    <p>Enter Stock That You'd Like To Search For</p>
+    <p>Enter Stock That You'd Like To Search For (Only Past 20 Years Available)</p>
 
     <div class="buy-box">
 
@@ -67,10 +67,10 @@
             <input type="text" name="ticker" placeholder="AAPL" value="">
             <br>
             <label>Start Date:</label>
-            <input type="text" name="sdate" placeholder="yyyy-mm-dd" value="">
+            <input type="date" name="sdate" placeholder="yyyy-mm-dd" value="">
             <br>
             <label>End Date:</label>
-            <input type="text" name="edate" placeholder="yyyy-mm-dd" value="">
+            <input type="date" name="edate" placeholder="yyyy-mm-dd" value="">
             <br>
             <button>Find</button>
         </form>

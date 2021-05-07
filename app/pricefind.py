@@ -4,7 +4,7 @@ import numpy as np
 import datetime as dt
 import matplotlib.pyplot as plt
 import requests
-
+import re
 
 API_KEY = os.getenv("ALPHAVANTAGE_API_KEY")
 
@@ -32,3 +32,9 @@ def stockinfo(symbol):
     sector = stuff['Sector']
     ind = stuff['Industry']
     return name,sector,ind
+
+def tickercheck(inputString):
+    return bool(re.search(r'^[A-Za-z]{1,5}$', inputString))
+
+def datecheck(date):
+    return bool(re.search('^\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$',date))
