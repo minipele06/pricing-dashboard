@@ -58,7 +58,7 @@ REFERENCES security(ticker)
 ON DELETE SET NULL;
 """
 
-connection = create_db_connection("localhost", "root", "@Ja10192", "stock_prices") # Connect to the Database
+connection = create_db_connection("bigdata.stern.nyu.edu", "DealingS21", "DealingS21!!", "DealingS21GB6") # Connect to the Database
 execute_query(connection, create_security_table)
 execute_query(connection, create_price_table)
 execute_query(connection, alter_price_table)

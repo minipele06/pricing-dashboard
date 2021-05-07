@@ -3,6 +3,7 @@ import pandas as pd
 import numpy as np
 import datetime as dt
 import matplotlib.pyplot as plt
+import requests
 
 
 API_KEY = os.getenv("ALPHAVANTAGE_API_KEY")
@@ -22,3 +23,12 @@ def pricefind(symbol,sdate,edate):
     # plt.savefig("my_chart_name.png")
     #new_df = new_df.to_dict('records')
     return new_df
+
+def stockinfo(symbol):
+    url = f"https://www.alphavantage.co/query?function=OVERVIEW&symbol={symbol}&apikey={API_KEY}"
+    r = requests.get(url)
+    stuff = r.json()
+    name = stuff['Name']
+    sector = stuff['Sector']
+    ind = stuff['Industry']
+    return name,sector,ind
