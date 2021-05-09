@@ -16,8 +16,6 @@ def sqlupload(symbol,sdate,edate):
                                 db="DealingS21GB6"))
 
     cursor = connection.cursor()
-    #cursor.execute("Select * from stock_prices.security")
-    #myresult = cursor.fetchall()
 
     sql = "INSERT INTO `security` (`Ticker`,`Name`,`Sector`,`Industry`) VALUES (%s,%s,%s,%s)"
 
