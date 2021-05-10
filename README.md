@@ -70,10 +70,13 @@ The data will be pulled from the Alphavantage API and then added to the SQL data
 
 Here are some examples of the output:
 
+Example 1
 ![Image of Example 1](screenshots/example1.png)
 
+Example 2a
 ![Image of Example 2](screenshots/example2.png)
 
+Example 2b
 ![Image of Example 3](screenshots/example3.png)
 
 ## Minimum Viable Product
