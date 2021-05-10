@@ -3,6 +3,7 @@ from mysql.connector import Error
 import pandas as pd
 import os
 
+#Code for original table creation in our database in bigdata
 def create_db_connection(host_name, user_name, user_password, db_name):
     connection = None
     try:

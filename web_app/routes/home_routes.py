@@ -8,12 +8,15 @@ import random
 import pandas as pd
 import base64
 
+#load functions
 from app.sqlupload2 import sqlupload
 from app.pricefind import tickercheck
 from app.pricefind import stockinfo
 
+#create page directory
 home_routes = Blueprint("home_routes", __name__)
 
+#create pricefind page
 @home_routes.route("/pricefind",methods=['GET','POST'])
 def pfind():
     if request.method == 'GET':
@@ -61,6 +64,7 @@ def pfind():
                 results2 = results2.to_dict('records')
                 return render_template("pricefind.html", results2=results2, stkinfo=stkinfo, image=pngImageB64String)
 
+#create pricefind2 page for two tickers
 @home_routes.route("/pricefind2",methods=['GET','POST'])
 def pfind2():
     if request.method == 'GET':

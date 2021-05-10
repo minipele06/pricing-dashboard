@@ -8,6 +8,7 @@ import re
 
 API_KEY = "IY2I9IHI08ABKC3Z"
 
+#API Call to pull stock price data from Alphavantage
 def pricefind(symbol,sdate,edate):
     url = f"https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol={symbol}&outputsize=full&apikey={API_KEY}&datatype=csv"
     df = pd.read_csv(url)
@@ -17,6 +18,7 @@ def pricefind(symbol,sdate,edate):
     new_df = df[(df['price_date'] >= sdate) & (df['price_date'] <= edate)]
     return new_df
 
+#API call to pull company information from Alphavantage based upon ticker
 def stockinfo(symbol):
     url = f"https://www.alphavantage.co/query?function=OVERVIEW&symbol={symbol}&apikey={API_KEY}"
     r = requests.get(url)
@@ -26,5 +28,6 @@ def stockinfo(symbol):
     ind = stuff['Industry']
     return name,sector,ind
 
+#Regex to validate ticker input
 def tickercheck(inputString):
     return bool(re.search(r'^[A-Za-z]{1,5}$', inputString))
