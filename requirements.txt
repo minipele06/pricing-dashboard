@@ -3,3 +3,5 @@ Flask
 python-dotenv
 matplotlib
 sqlalchemy
+requests
+pymysql

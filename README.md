@@ -14,14 +14,19 @@ This web app allows you to search for stock price history for one or two stock a
 ## Setup
 
 ### Repo Setup
-Use [GitHub](https://github.com/minipele06/pricing-dashboard) to clone the project repository for the Stock Market Simulator. Use GitHub Desktop software or the command-line to download or "clone" it onto your computer. Choose a familiar download location like the Desktop.
+Use [GitHub](https://github.com/minipele06/pricing-dashboard) to clone the project repository for the Stock Market Simulator. Use GitHub Desktop software or the command-line to download or "clone" it onto your computer. You will be prompted to choose a local path to save the repository. Choose a familiar download location like the Desktop. An example would be to save to a local path such as /Desktop/pricing-dashboard. 
+
+![Image of Local Path Prompt](screenshots/localpath.png)
 
 After cloning the repo, navigate there from the command-line:
 
 >cd ~/Desktop/pricing-dashboard
 
 ### Environment Setup
-Create and activate a new Anaconda virtual environment:
+
+If you have never or don't have Conda installed, please visit the following page and follow the instructions: https://conda.io/projects/conda/en/latest/user-guide/install/index.html
+
+Once you have installed, create and activate a new Anaconda virtual environment:
 
 >conda create -n price-env python=3.7 # (first time only)
 
