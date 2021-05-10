@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 import requests
 import re
 
-API_KEY = os.getenv("ALPHAVANTAGE_API_KEY")
+API_KEY = "IY2I9IHI08ABKC3Z"
 
 def pricefind(symbol,sdate,edate):
     url = f"https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol={symbol}&outputsize=full&apikey={API_KEY}&datatype=csv"
