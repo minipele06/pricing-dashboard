@@ -15,13 +15,6 @@ def pricefind(symbol,sdate,edate):
     df['price_date'] = pd.to_datetime(df['price_date']).dt.normalize()
     df['strdate'] = df['price_date'].dt.strftime('%Y-%m-%d')
     new_df = df[(df['price_date'] >= sdate) & (df['price_date'] <= edate)]
-    # x = df['Date']
-    # y = df['Close']
-    # fig = plt.figure(figsize=(16, 12))
-    # plt.plot(df['Date'],df['Close'])
-    # plt.xlabel('Date',fontsize=10)
-    # plt.savefig("my_chart_name.png")
-    #new_df = new_df.to_dict('records')
     return new_df
 
 def stockinfo(symbol):
@@ -35,6 +28,3 @@ def stockinfo(symbol):
 
 def tickercheck(inputString):
     return bool(re.search(r'^[A-Za-z]{1,5}$', inputString))
-
-def datecheck(date):
-    return bool(re.search('^\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$',date))

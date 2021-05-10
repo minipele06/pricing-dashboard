@@ -8,11 +8,8 @@ import random
 import pandas as pd
 import base64
 
-
-from app.pricefind import pricefind
 from app.sqlupload2 import sqlupload
 from app.pricefind import tickercheck
-from app.pricefind import datecheck
 from app.pricefind import stockinfo
 
 home_routes = Blueprint("home_routes", __name__)
