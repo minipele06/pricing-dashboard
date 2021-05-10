@@ -14,7 +14,11 @@ This web app allows you to search for stock price history for one or two stock a
 ## Setup
 
 ### Repo Setup
-Use [GitHub](https://github.com/minipele06/pricing-dashboard) to clone the project repository for the Stock Market Simulator. Use GitHub Desktop software or the command-line to download or "clone" it onto your computer. You will be prompted to choose a local path to save the repository. Choose a familiar download location like the Desktop. An example would be to save to a local path such as /Desktop/pricing-dashboard. 
+Use [GitHub](https://github.com/minipele06/pricing-dashboard) to clone the project repository for the Stock Market Simulator. Use GitHub Desktop software or the command-line to download or "clone" it onto your computer. 
+
+![Image of Repo Prompt](screenshots/repo.png)
+
+You will be prompted to choose a local path to save the repository. Choose a familiar download location like the Desktop. An example would be to save to a local path such as /Desktop/pricing-dashboard. 
 
 ![Image of Local Path Prompt](screenshots/localpath.png)
 
@@ -63,6 +67,14 @@ The price find page is the main landing page where you can perform all of the fu
 There is some validation upon the inputs. The stock ticker is checked that it includes 1-5 letters by utilizing regex. The dates are checked so that the start date is not after the end date and that either date is not in the future.
 
 The data will be pulled from the Alphavantage API and then added to the SQL database if it does not already exist. The ticker symbol is also added to the ticker table if it does not already exist along with the company name, sector, and industry. The data is then displayed on the web page in a table and a graph. 
+
+Here are some examples of the output:
+
+![Image of Example 1](screenshots/example1.png)
+
+![Image of Example 2](screenshots/example2.png)
+
+![Image of Example 3](screenshots/example3.png)
 
 ## Minimum Viable Product
 
