@@ -41,7 +41,7 @@
             tr:hover {background-color: #f5f5f5;}
             .stockchart {
                 width: 700px;
-                height: 250px;
+                height: 350px;
                 position: absolute;
                 top: 125px;
                 left: 545px;
@@ -73,10 +73,13 @@
 
     <div class="buy-box">
 
-        <form action="/pricefind" id="form1" method="POST">
+        <form action="/pricefind2" id="form1" method="POST">
 
             <label>Stock Ticker:</label>
             <input type="text" name="ticker" placeholder="AAPL" value="">
+            <br>
+            <label>Stock Ticker:</label>
+            <input type="text" name="ticker2" placeholder="AAPL" value="">
             <br>
             <label>Start Date:</label>
             <input type="date" name="sdate" placeholder="yyyy-mm-dd" value="">
@@ -87,7 +90,7 @@
             <button>Find</button>
         </form>
     </div>
-    <p></palign><a href=pricefind2 ><button class=grey style="height:25px;width:25px">+</button></a></p>
+    <p></palign><a href=pricefind ><button class=grey style="height:25px;width:25px">-</button></a></p>
     <br>
     {% if image %}
     <img class="stockchart" src="{{ image }}"/>
@@ -107,6 +110,30 @@
       
         <!-- table rows -->
         {% for dict_item in results2 %}
+        <tr>
+           {% for value in dict_item.values() %}
+           <td> {{ value }} </td>
+           {% endfor %}
+        </tr>
+        {% endfor %}
+    </table>
+    <br>
+    {% if image %}
+    <h3>Company Name: {{stkinfo2[0]}}</h3>
+    {% endif %}
+    <br>
+    <table style="width:100%">
+        <!-- table header -->
+        {% if results3 %}
+        <tr>
+           {% for item in results3[0] %}
+           <th> {{ item }} </th>
+           {% endfor %}
+        </tr>
+        {% endif %}
+      
+        <!-- table rows -->
+        {% for dict_item in results3 %}
         <tr>
            {% for value in dict_item.values() %}
            <td> {{ value }} </td>

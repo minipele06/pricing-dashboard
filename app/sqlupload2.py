@@ -4,22 +4,34 @@ from app.pricefind import stockinfo
 import pymysql
 import pandas as pd
 
-def sqlupload(symbol,sdate,edate):
-    connection = pymysql.connect(host='bigdata.stern.nyu.edu',
-                                user='DealingS21',
-                                password='DealingS21!!',
-                                db='DealingS21GB6')
+# def sqlupload(symbol,sdate,edate):
+#     connection = pymysql.connect(host='bigdata.stern.nyu.edu',
+#                                 user='DealingS21',
+#                                 password='DealingS21!!',
+#                                 db='DealingS21GB6')
 
-    engine = create_engine("mysql+pymysql://{user}:{pw}@bigdata.stern.nyu.edu/{db}"
-                        .format(user="DealingS21",
-                                pw="DealingS21!!",
-                                db="DealingS21GB6"))
+#     engine = create_engine("mysql+pymysql://{user}:{pw}@bigdata.stern.nyu.edu/{db}"
+#                         .format(user="DealingS21",
+#                                 pw="DealingS21!!",
+#                                 db="DealingS21GB6"))
+
+def sqlupload(symbol,sdate,edate):
+    connection = pymysql.connect(host='127.0.0.1',
+                                user='root',
+                                password='@Ja10192',
+                                db='stock_prices')
+
+    engine = create_engine("mysql+pymysql://{user}:{pw}@localhost/{db}"
+                        .format(user="root",
+                                pw="@Ja10192",
+                                db="stock_prices"))
 
     cursor = connection.cursor()
 
     sql = "INSERT INTO `security` (`Ticker`,`Name`,`Sector`,`Industry`) VALUES (%s,%s,%s,%s)"
 
-    df1 = pd.read_sql('''select * from DealingS21GB6.security''',engine)
+    #df1 = pd.read_sql('''select * from DealingS21GB6.security''',engine)
+    df1 = pd.read_sql('''select * from stock_prices.security''',engine)
     if not df1['ticker'].str.contains(symbol).any():
         result = stockinfo(symbol)
         name = result[0]
@@ -28,7 +40,8 @@ def sqlupload(symbol,sdate,edate):
         cursor.execute(sql, (symbol,name,sector,ind))
         connection.commit()
 
-    df2 = pd.read_sql('''select * from DealingS21GB6.daily_price''',engine)
+    #df2 = pd.read_sql('''select * from DealingS21GB6.daily_price''',engine)
+    df2 = pd.read_sql('''select * from stock_prices.daily_price''',engine)
 
     df3 = pricefind(symbol,sdate,edate)
     df3.insert(0,"price_id",symbol + df3['strdate'])
@@ -44,8 +57,9 @@ def sqlupload(symbol,sdate,edate):
 
     connection.close()
 
-    df1 = pd.read_sql(f'''select * from DealingS21GB6.daily_price where ticker="{symbol}" and price_date>="{sdate}" and price_date<="{edate}"''',engine)
+    #df1 = pd.read_sql(f'''select * from DealingS21GB6.daily_price where ticker="{symbol}" and price_date>="{sdate}" and price_date<="{edate}"''',engine)
+    df1 = pd.read_sql(f'''select * from stock_prices.daily_price where ticker="{symbol}" and price_date>="{sdate}" and price_date<="{edate}"''',engine)
     df1.drop(columns=['price_id','ticker'],axis=1,inplace=True)
     df1.rename(columns={'price_date':'Date'}, inplace=True)
-    df1 = df1.to_dict('records')
+    #df1 = df1.to_dict('records')
     return df1
